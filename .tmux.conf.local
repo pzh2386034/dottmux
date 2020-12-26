@@ -338,11 +338,11 @@ tmux_conf_copy_to_os_clipboard=false
 #set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
-# set -gu prefix2
-# unbind C-a
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
+#set -gu prefix1
+unbind C-a
+unbind C-b
+set -g prefix C-b
+bind C-b send-prefix
 
 # move status line to top
 #set -g status-position top
@@ -371,3 +371,11 @@ tmux_conf_copy_to_os_clipboard=false
 #
 # "$@"
 # # /!\ do not remove the previous line
+
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+bind E new-window -n "~/.zsh" "EDITOR=\${EDITOR//mvim/vim} && EDITOR=\${EDITOR//gvim/vim} && \${EDITOR:-vim} ~/.zsh && source ~/.zsh && tmux display \"~/.zsh sourced\""
+set-window-option -g mode-keys vi
+
