@@ -376,6 +376,6 @@ bind -r H resize-pane -L 5
 bind -r J resize-pane -D 5
 bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
-bind E new-window -n "~/.zsh" "EDITOR=\${EDITOR//mvim/vim} && EDITOR=\${EDITOR//gvim/vim} && \${EDITOR:-vim} ~/.zsh && source ~/.zsh && tmux display \"~/.zsh sourced\""
+bind E new-window -n "~/.zshrc" "EDITOR=\${EDITOR//mvim/vim} && EDITOR=\${EDITOR//gvim/vim} && \${EDITOR:-vim} ~/.zshrc && source ~/.zsh && tmux display \"~/.zshrc sourced\""
 set-window-option -g mode-keys vi
 
