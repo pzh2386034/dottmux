@@ -20,12 +20,18 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle git
 antigen bundle zsh-users/zsh-completions
 #antigen bundle zsh-users/zsh-autosuggestions
+# no use
 antigen bundle autojump
 antigen bundle sorin-ionescu/prezto
+# power line status
 antigen theme romkatv/powerlevel10k
+# display aliases command 
 antigen bundle "MichaelAquilina/zsh-you-should-use"
 antigen bundle supercrabtree/k
-antigen bundle "MichaelAquilina/zsh-you-should-use"
+# antigen bundle zsh-users/zsh-history-substring-search
+# enhance cd
+antigen bundle b4b4r07/enhancd
+antigen bundle denisidoro/navi
 
 
 # self bind key
