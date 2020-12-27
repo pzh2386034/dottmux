@@ -32,6 +32,9 @@ antigen bundle supercrabtree/k
 # enhance cd
 antigen bundle b4b4r07/enhancd
 antigen bundle denisidoro/navi
+antigen bundle zsh-users/zaw
+antigen bundle supercrabtree/k #list file info
+
 
 
 # self bind key
