@@ -378,4 +378,6 @@ bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
 bind E new-window -n "~/.zshrc" "EDITOR=\${EDITOR//mvim/vim} && EDITOR=\${EDITOR//gvim/vim} && \${EDITOR:-vim} ~/.zshrc && source ~/.zsh && tmux display \"~/.zshrc sourced\""
 set-window-option -g mode-keys vi
-
+bind-key { swap-window -t -1 #swap-window -s 3 -t 1
+bind-key } swap-window -t +1
+# run-shell ~/clone/path/logging.tmux
