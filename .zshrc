@@ -38,11 +38,16 @@ antigen bundle supercrabtree/k #list file info
 
 
 # self bind key
-
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
-bindkey '\eh' beginning-of-line
-bindkey '\el' end-of-line
+bindkey '^h' backward-delete-char
+bindkey '^j' backward-kill-word
+bindkey '\eh' backward-char
+bindkey '\el' forward-char
+bindkey '\ej' backward-word
+bindkey '\ek' forward-word
+
+
 
 setopt auto_pushd
 hash -d bmc=$HOME/wks/openbmc
