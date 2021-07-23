@@ -26,7 +26,7 @@ antigen bundle sorin-ionescu/prezto
 # power line status
 antigen theme romkatv/powerlevel10k
 # display aliases command 
-antigen bundle "MichaelAquilina/zsh-you-should-use"
+# antigen bundle "MichaelAquilina/zsh-you-should-use"
 antigen bundle supercrabtree/k
 # antigen bundle zsh-users/zsh-history-substring-search
 # enhance cd
@@ -58,3 +58,25 @@ alias cd=" cd"
 alias ls=" ls"
 
 antigen apply
+
+alias qemu='f() {qemu-bmc -m 256 -M ast2600-evb -nographic -drive file=$1,format=raw,if=mtd -net nic -net user,hostfwd=:127.0.0.1:2222-:22,hostfwd=:127.0.0.1:2443-:443,hostname=qemu };f'
+alias qemu-arm='f() {docker run -it --rm -v /home/pan/wks/raspberry/learn-raspberry/src/lesson00/:/root mikoto2000/qemu-system-arm}; f'
+alias tex='f() {docker run -it --rm -v /home/pan/wks/greatwall/doc:/root zeuspan/texcompiler}; f'
+alias dk-dhcpd='f() {docker run -it --rm --init --net host -v "/etc/dhcp":/data networkboot/dhcpd enx081f7135c299 &}; f'
+alias dk-rpic='f() {docker run --rm -v $(pwd):/app -w /app pan/rpi-compiler make $1 };f'
+alias um='f() {umount /media/pan/$1}; f'
+export PATH="~/wk/qemu/build/aarch64-softmmu:${PATH}"
+alias bmcweb='f() {docker run -it --rm -v /usr/share/www:/usr/share/www -v /home/pan/wks/testWeb/bmcweb:/build --net=host bmcweb-compiler}; f'
+
+proxy () {
+	export https_proxy='http://127.0.0.1:8889/'
+	export http_proxy='http://127.0.0.1:8889/'
+	echo "HTTP(s) proxy on"
+}
+noproxy () {
+	unset http_proxy
+	unset htps_proxy
+	echo "HTTP(s) proxy off"
+}
+# export GIT_PROXY_COMMAND="oe-git-proxy"
+# export NO_PROXY=$no_proxy
