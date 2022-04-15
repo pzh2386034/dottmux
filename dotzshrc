@@ -14,7 +14,9 @@ source "$ANTIGEN"
 antigen use prezto
 antigen bundle rupa/z z.sh
 antigen bundle Vifon/deer
-antigen bundle zdharma/fast-syntax-highlighting
+if [[ `uname` == "Darwin" ]]; then
+    antigen bundle zdharma/fast-syntax-highlighting
+fi
 antigen bundle willghatch/zsh-cdr
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle git
@@ -30,7 +32,9 @@ antigen theme romkatv/powerlevel10k
 antigen bundle supercrabtree/k
 # antigen bundle zsh-users/zsh-history-substring-search
 # enhance cd
-antigen bundle b4b4r07/enhancd
+if [[ `uname` == "Darwin" ]]; then
+    antigen bundle b4b4r07/enhancd
+fi
 antigen bundle denisidoro/navi
 antigen bundle zsh-users/zaw
 antigen bundle supercrabtree/k #list file info
@@ -178,3 +182,4 @@ function drmi() {
 # export NO_PROXY=$no_proxy
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/dotfzf/shell/key-bindings.zsh ] && source ~/dotfzf/shell/key-bindings.zsh
