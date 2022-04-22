@@ -180,6 +180,56 @@ function drmi() {
 }
 # export GIT_PROXY_COMMAND="oe-git-proxy"
 # export NO_PROXY=$no_proxy
+ch='/opt/nvme/zeuspan/openbmc'
+alias dh="cd $ch'/build/tmp/deploy/images/tririvers'"
+alias mh="cd $ch'/openbmc-master/meta-tencent/meta-common/recipes-phosphor'"
+alias oh="cd $ch'/openbmc-master'"
+alias bmcweb='docker run --rm -it -v ~/source:/build wort-test'
+alias loadenv="cd $ch'/openbmc-master';source setup tririvers ../build; cd workspace/sources"
+alias rk='rm ~/.ssh/known_hosts'
+function m(){
+	sudo minicom -D /dev/$1
+}
+
+passwd="root"
+function u() {
+    curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/octet-stream"\
+        -X POST -T $1  https://172.16.16.$2/redfish/v1/UpdateService?save=false
+}
+function t(){
+    curl -k  --insecure --basic -u root:$passwd -H "Content-Type: application/octet-stream" \
+        -X GET https://172.16.16.$2/redfish/v1/TaskService/Tasks/$1
+}
+function c(){
+    curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" \
+        -X POST -d "{}" https://172.16.16.$1/redfish/v1/Managers/bmc/Actions/Manager.CollectLog/Manual/
+}
+function cg(){
+    curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" \
+        -X GET https://172.16.16.$1/redfish/v1/Managers/bmc/CollectLog/Manual/
+}
+function df(){
+    curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" -X DELETE -d "{}" https://172.16.16.$1/redfish/v1/UpdateService/FirmwareInventory
+}
+function rfg(){
+    curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" -X GET https://172.16.16.$1$2
+}
+function rfpa(){
+    curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" -X PATCH -d $3 https://172.16.16.$1$2
+}
+function rfpo(){
+    curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" -X POST -d $3 https://172.16.16.$1$2
+}
+
+function rfd(){
+    curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" -X DELETE -d "{}" https://172.16.16.$1$2
+}
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+setopt no_nomatch
+function gfp(){
+	git format-patch -1 --stdout > $1 
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/dotfzf/shell/key-bindings.zsh ] && source ~/dotfzf/shell/key-bindings.zsh
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
