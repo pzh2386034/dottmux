@@ -95,6 +95,27 @@ fd() {
 				  -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
+dbb() {
+  local dir
+  loadenv
+  dir=$(ls | fzf -m)
+  cd "$dir"
+  echo "===================Display git status===================="
+  git status
+  echo "===================Display git log===================="
+  git log --oneline --max-count=6
+  read -q REPLY?"Do you want to reset $dir reposite?"
+	if [ "x$REPLY" == "xy" ]
+	then
+		devtool reset $dir
+		cd -
+		read -q DEL?"Do you want to DELETE $dir?"
+		if [ "x$DEL" == "xy" ]
+		then
+			rm -rf $dir	
+		fi
+	fi  
+}
 fkill() {
     local pid 
     if [ "$UID" != "0" ]; then
