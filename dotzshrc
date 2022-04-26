@@ -10,6 +10,8 @@ fi
 
 ANTIGEN="$HOME/wks/antigen/antigen.zsh"
 # 共享history command
+HISTFILE=~/.zhistory
+HISTSIZE=SAVEHIST=10000
 setopt inc_append_history
 setopt share_history
 
@@ -97,7 +99,9 @@ fd() {
 }
 dbb() {
   local dir
-  loadenv
+  cd $ch'/openbmc-master';
+  source setup tririvers ../build; 
+  cd workspace/sources
   dir=$(ls | fzf -m)
   cd "$dir"
   echo "===================Display git status===================="
@@ -258,4 +262,3 @@ function gfp(){
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
