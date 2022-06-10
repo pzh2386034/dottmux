@@ -224,7 +224,7 @@ function m(){
 passwd="root"
 function u() {
     curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/octet-stream"\
-        -X POST -T $1  https://172.16.16.$2/redfish/v1/UpdateService?save=false
+        -X POST -T $1  https://172.16.$2/redfish/v1/UpdateService?save=false
 }
 function t(){
     curl -k  --insecure --basic -u root:$passwd -H "Content-Type: application/octet-stream" \
