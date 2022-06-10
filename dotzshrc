@@ -17,7 +17,7 @@ setopt share_history
 
 source "$ANTIGEN"
 antigen use prezto
-antigen bundle rupa/z z.sh
+#antigen bundle rupa/z z.sh
 antigen bundle Vifon/deer
 if [[ `uname` == "Darwin" ]]; then
     antigen bundle zdharma/fast-syntax-highlighting
