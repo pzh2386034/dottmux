@@ -17,7 +17,7 @@ setopt share_history
 
 source "$ANTIGEN"
 antigen use prezto
-antigen bundle rupa/z z.sh
+#antigen bundle rupa/z z.sh
 antigen bundle Vifon/deer
 if [[ `uname` == "Darwin" ]]; then
     antigen bundle zdharma/fast-syntax-highlighting
@@ -261,3 +261,8 @@ function gfp(){
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pnpm
+export PNPM_HOME="/Users/pan/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
