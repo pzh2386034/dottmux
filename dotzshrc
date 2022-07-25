@@ -68,8 +68,7 @@ setopt hist_ignore_space
 alias cd=" cd"
 alias ls=" ls"
 
-alias gst=" git status"
-alias gsb='git status -sb'
+alias gdcd='gd --cached'
 antigen apply
 
 alias qemu='f() {qemu-bmc -m 256 -M ast2600-evb -nographic -drive file=$1,format=raw,if=mtd -net nic -net user,hostfwd=:127.0.0.1:2222-:22,hostfwd=:127.0.0.1:2443-:443,hostname=qemu };f'
