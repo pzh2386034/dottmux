@@ -45,6 +45,7 @@ antigen bundle zsh-users/zaw
 antigen bundle supercrabtree/k #list file info
 antigen bundle 'wfxr/forgit'
 antigen bundle 'NullSense/fuzzy-sys' # fzf for systemctrl
+antigen bundle agkozak/zsh-z
 
 
 
@@ -69,6 +70,7 @@ alias cd=" cd"
 alias ls=" ls"
 
 alias gdcd='gd --cached'
+alias gst='git status'
 antigen apply
 
 alias qemu='f() {qemu-bmc -m 256 -M ast2600-evb -nographic -drive file=$1,format=raw,if=mtd -net nic -net user,hostfwd=:127.0.0.1:2222-:22,hostfwd=:127.0.0.1:2443-:443,hostname=qemu };f'
@@ -216,6 +218,7 @@ alias oh="cd $ch'/openbmc-master'"
 alias bmcweb='docker run --rm -it -v ~/source:/build wort-test'
 alias loadenv="cd $ch'/openbmc-master';source setup tririvers ../build; cd workspace/sources"
 alias rk='rm ~/.ssh/known_hosts'
+alias utool="cd /opt/nvme/xianqilu/checkVersion/CentOS/ins_stress_openbmc_v2.1"
 function m(){
 	sudo minicom -D /dev/$1
 }
@@ -250,6 +253,9 @@ function rfpo(){
     curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" -X POST -d $3 https://172.16.16.$1$2
 }
 
+function coll(){
+    curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" -X POST -d "{}" https://172.16.16.$1$2/redfish/v1/Managers/bmc/Actions/Manager.CollectLog/Manual
+}
 function rfd(){
     curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" -X DELETE -d "{}" https://172.16.16.$1$2
 }
