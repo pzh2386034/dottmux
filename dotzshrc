@@ -15,6 +15,12 @@ HISTSIZE=SAVEHIST=10000
 setopt inc_append_history
 setopt share_history
 
+# pyenv
+#export PYENV_ROOT="$HOME/.pyenv"
+#command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
+# 
+
 source "$ANTIGEN"
 antigen use prezto
 #antigen bundle rupa/z z.sh
@@ -71,6 +77,11 @@ alias ls=" ls"
 
 alias gdcd='gd --cached'
 alias gst='git status'
+alias gst=" git status"
+alias gsb='git status -sb'
+alias python=/usr/bin/python3
+alias pip=/usr/bin/pip3
+alias scrapy="/Users/zeus/Library/Python/3.8/bin/scrapy"
 antigen apply
 
 alias qemu='f() {qemu-bmc -m 256 -M ast2600-evb -nographic -drive file=$1,format=raw,if=mtd -net nic -net user,hostfwd=:127.0.0.1:2222-:22,hostfwd=:127.0.0.1:2443-:443,hostname=qemu };f'
