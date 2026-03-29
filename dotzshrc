@@ -72,7 +72,6 @@ hash -d bmc=$HOME/wks/openbmc
 
 # 不以空格开头的命令记录到历史中
 setopt hist_ignore_space
-alias cd=" cd"
 alias ls=" ls"
 
 alias gdcd='gd --cached'
@@ -270,6 +269,12 @@ function coll(){
 function rfd(){
     curl -k --insecure --basic -u root:$passwd -H "Content-Type: application/json" -X DELETE -d "{}" https://172.16.16.$1$2
 }
+# Fix completion: antigen sets compdef to no-op and has a precmd hook that re-runs
+# broken compinit. Remove the hook and re-init completion properly.
+add-zsh-hook -D precmd _antigen_compinit 2>/dev/null
+autoload -Uz compinit && compinit -u -d "$HOME/.cache/zcompdump"
+alias cd="\cd "
+alias python="python3"
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 setopt no_nomatch
